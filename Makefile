@@ -13,7 +13,7 @@ endif
 
 REGISTRY_NAME?=docker.io/hashicorpboundary
 IMAGE_NAME=postgres
-IMAGE_TAG ?= $(REGISTRY_NAME)/$(IMAGE_NAME):11-alpine
+IMAGE_TAG ?= $(REGISTRY_NAME)/$(IMAGE_NAME):13-alpine
 DOCKER_ARGS ?= -d
 PG_OPTS ?=
 TEST_DB_PORT ?= 5432
@@ -62,7 +62,7 @@ rm-id-flag-from-docs:
 test-database-up:
 	@echo "Using image:                       $(IMAGE_TAG)"
 	@echo "Additional postgres configuration: $(PG_OPTS)"
-	@echo "Using volume:                      $(GOMODCACHE)/github.com/hashicorp/boundary@$(BOUNDARY_VERSION)/internal/db/schema/migrations/postgres:/migrations"
+	@echo "Using volume:                      $(GOMODCACHE)/github.com/hashicorp/boundary@$(BOUNDARY_VERSION)/internal/db/schema/migrations:/migrations"
 	@docker run \
 		$(DOCKER_ARGS) \
 		--name boundary-sql-tests \
